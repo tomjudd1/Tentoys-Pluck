@@ -223,7 +223,7 @@ p.drag = function (event) {
 	// Pluck the hair if pulled past the hair strength amount
 	if(this.getHairPullAmount() >= this.strength){
 		console.log("PLUCKED");
-		playSFX("pluck"+rand(1,3));
+		playSFX("pluck"+rand(1,5));
 		this.plucked = true;
 	}
 	

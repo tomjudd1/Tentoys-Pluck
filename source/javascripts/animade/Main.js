@@ -58,7 +58,7 @@ var hairWidth = 10 * scaler;
 var hairColor = "#766b6a";
 var skinColor = "#ffc7c0";
 
-var noHairs = 425;
+var noHairs = rand(10,100);
 var hairs = [];
 
 
@@ -80,14 +80,16 @@ function init() {
  
 
   hairCont = stage.addChild(new createjs.Container());
-  hairCont.width = window.innerWidth*0.8;
-  hairCont.height = window.innerHeight*0.8;
+  hairCont.width = window.innerWidth*1;
+  hairCont.height = window.innerHeight*1;
 
   resize();
 
-  var sqrt = Math.floor(Math.sqrt(noHairs));
+  var sqrt = Math.round(Math.sqrt(noHairs));
   var xSpace = (hairCont.width) / sqrt;
   var ySpace = (hairCont.height) / sqrt;
+
+  console.log("SQRT = " + sqrt);
 
   for (var i = 0; i < noHairs; i++) {
       
@@ -95,9 +97,14 @@ function init() {
 
     var row = Math.floor(i/sqrt);
 
+    console.log(row);
+
     // position on the grid
-    h.x = xSpace*0.5 + xSpace*i - (Math.ceil(sqrt)*xSpace)*row + rand(-5,5) ;
-    h.y = ySpace*0.7 + ySpace*row + rand(-10,10);    
+    //h.x = xSpace*i - (Math.round(sqrt)*xSpace)*row + rand(-5,5) ;
+    //h.y = ySpace*row + rand(-10,10);    
+    
+    h.x = xSpace*i - (Math.round(sqrt)*xSpace)*row;
+    h.y = ySpace*row;    
 
     hairs.push(h)
     hairCont.addChild(hairs[i]);
@@ -111,6 +118,8 @@ function init() {
     h.rotation = a + rand(-10,10);
     h.setGravity(h.rotation);
 
+    h.on("mousedown", hairClicked);
+
   };
 
   stage.update();
@@ -120,6 +129,11 @@ function init() {
 
 }
 
+function hairClicked(event){
+  console.log(hairCont.children.length);
+  hairCont.setChildIndex(event.target, hairCont.children.length-1);
+}
+  
 
 function tick() {
   stage.update();
