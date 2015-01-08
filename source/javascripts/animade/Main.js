@@ -45,6 +45,11 @@ if (Modernizr.canvas) {
 
 }
 
+var noHairs = rand(100,150);
+var padding = 0.1;
+var hairOffset = 0.25;
+
+
 var stage;
 
 var titleCont;
@@ -57,8 +62,10 @@ var hairLength = 25 * scaler;
 var hairWidth = 10 * scaler;
 var hairColor = "#766b6a";
 var skinColor = "#ffc7c0";
+var hairStrength = [100,200];
+var hairPosRandom = 5;
+var hairRotRandom = 5;
 
-var noHairs = rand(10,100);
 var hairs = [];
 
 
@@ -80,8 +87,8 @@ function init() {
  
 
   hairCont = stage.addChild(new createjs.Container());
-  hairCont.width = window.innerWidth*1;
-  hairCont.height = window.innerHeight*1;
+  hairCont.width = window.innerWidth*(1-padding);
+  hairCont.height = window.innerHeight*(1-padding);
 
   resize();
 
@@ -93,29 +100,32 @@ function init() {
 
   for (var i = 0; i < noHairs; i++) {
       
-    var h = new Hair(new createjs.Point(0, 0), hairLength - rand(0,hairLength*0.25) ,  hairColor, hairWidth, skinColor, rand(100,200));
+    var h = new Hair(new createjs.Point(0, 0), hairLength - rand(0,hairLength*0.25) ,  hairColor, hairWidth, skinColor, rand(hairStrength[0],hairStrength[1]));
 
     var row = Math.floor(i/sqrt);
 
     console.log(row);
-
-    // position on the grid
-    //h.x = xSpace*i - (Math.round(sqrt)*xSpace)*row + rand(-5,5) ;
-    //h.y = ySpace*row + rand(-10,10);    
     
-    h.x = xSpace*i - (Math.round(sqrt)*xSpace)*row;
-    h.y = ySpace*row;    
+    // offset 
+    var offset = - xSpace*hairOffset;
+    if (isEven(row)) { offset = xSpace*hairOffset };
+
+    h.x = xSpace*0.5 + xSpace*i - ((Math.round(sqrt)*xSpace)*row) - offset + rand(-hairPosRandom,hairPosRandom);
+    h.y = ySpace*0.5 + ySpace*row + rand(-hairPosRandom,hairPosRandom);    
+
+    if(row >= sqrt)
+        break;
 
     hairs.push(h)
     hairCont.addChild(hairs[i]);
 
     // get angle
-    var source = new createjs.Point(hairCont.width*0.5, hairCont.height*1.5);
-    var target = new createjs.Point(h.x, h.y);
+    var source = new createjs.Point(hairCont.width*0.5, hairCont.height*1.5) ;
+    var target = new createjs.Point(h.x, h.y) ;
     //var a = getAngle(source, target);
     var a = 0;
 
-    h.rotation = a + rand(-10,10);
+    h.rotation = a + rand(-hairRotRandom,hairRotRandom);
     h.setGravity(h.rotation);
 
     h.on("mousedown", hairClicked);

@@ -50,3 +50,18 @@ function getAngle(source, target){
 	if(a < 0) a = 360.0 + a;
 	return a;
 }
+
+function isNumber(n)
+{
+   return n === parseFloat(n);
+}
+
+function isEven(n) 
+{
+   return isNumber(n) && (n % 2 == 0);
+}
+
+function isOdd(n)
+{
+   return isNumber(n) && (Math.abs(n) % 2 == 1);
+}

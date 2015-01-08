@@ -119,6 +119,10 @@ p.initialize = function(start, length, lineColor, strokeWidth, skinColor, streng
 
 	this.drawLine();
 
+	// var marker = new  createjs.Graphics();
+	// marker.f("#ccc").dc(0, 0, 30);
+	// var markerShape = new createjs.Shape(marker);
+	// this.addChild(markerShape);
 
 	this.on("mousedown", this.clicked);
 	this.on("pressmove", this.drag);
