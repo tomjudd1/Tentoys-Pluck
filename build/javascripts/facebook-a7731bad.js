@@ -1,0 +1,1 @@
+window.fbAsyncInit=function(){FB.init({appId:"793500784040825",xfbml:!0,version:"v2.2"})},$(".fb-like").length>0&&("undefined"!=typeof FB?FB.init({status:!0,cookie:!0,xfbml:!0}):$.getScript("http://connect.facebook.net/en_US/all.js#xfbml=1",function(){FB.init({status:!0,cookie:!0,xfbml:!0})}));
