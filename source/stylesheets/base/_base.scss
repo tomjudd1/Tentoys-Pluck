@@ -1,0 +1,43 @@
+// ==========================================================================
+//
+// Base CSS. 
+// Only include things which need to appear in *every* page
+//
+//
+* { 
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    outline:none;
+}
+
+@font-face {
+  font-family: 'BrandonText-Regular';
+  src: url("../data/fonts/2817DE_1_0.eot");
+  src: url("../data/fonts/2817DE_1_0.eot?#iefix") format("embedded-opentype"), url("../data/fonts/2817DE_1_0.woff") format("woff"), url("../data/fonts/2817DE_1_0.ttf") format("truetype");
+}
+
+
+@import "../../bower_components/normalize-css/normalize";
+
+// Installed as a gem for lots of annoying reasons
+@import "bourbon";
+
+
+
+body {
+  @include transition(0.4s); // Checks bourbon.io is running
+  
+  //background-image: url("../data/images/bg.jpg");
+  color:$color--text;
+  font-family: $font--base;
+  opacity: 0;
+  background:$color--background;
+  
+  .support{
+    background:$color--background;
+  }
+  
+  .no-support{
+    background: #D0502D;
+  }
+}

@@ -1,0 +1,106 @@
+// ==========================================================================
+//
+// Layout
+// 
+
+$cross-fade: 0s;
+
+
+canvas{
+	//display:none;
+  @include transition(opacity $cross-fade);
+  opacity: 0;
+  z-index: 2;
+  position:fixed;
+  top: 0px;
+  left: 0px;
+
+
+}
+
+.background-text{
+  position: fixed;
+  left: 40px;
+  right: 40px;
+  top:7%;
+  bottom: 70%;
+  text-align: center;
+  font-weight: bolder;
+
+  .text-mid{
+    @include transition(opacity 0.75s);
+    opacity: 0;
+    font-size: 8vw;
+    display: block;
+    line-height: 90%;
+    text-transform: uppercase;
+    
+  
+    @media screen and (min-height: 500px) and (min-width: 500px) {
+      display: inline-block;
+      &.js-text-change{
+        padding-left: 0.2em;
+      }
+    }
+
+    @media screen and (min-height: 1000px) {
+        display: block;
+        font-size: 10vw;
+        &.js-text-change{
+          padding-left: 0em;
+        }
+
+    }
+    @media screen and (min-width: 1400px) {
+        font-size: 10em;
+    }
+
+  }
+  .text-large{
+    @include transition(opacity 0.75s);
+    opacity: 0;
+    font-size: 18vw;
+    display: block;
+    line-height: 120%;
+    text-shadow: 0px 0.4vw #238a80;
+  }
+}
+
+
+#mute-button{
+  position: fixed;
+  right: 15px;
+  top: 10px;
+  z-index: 99999;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background: url("../data/images/mute-sprite.png") no-repeat;
+  background-position: 0px 0px;
+  background-size: auto 100%;
+
+
+  &.muted{
+    background-position: -40px 0px;
+  }
+}
+
+.info-button{
+  position: fixed;
+  right: 10px;
+  bottom: 15px;
+  z-index: 99999;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background: url("../data/images/info-sprite.png") no-repeat;
+  background-position: 0px 0px;
+  background-size: auto 100%;
+
+  &.open{
+    background-position: -40px 0px;
+  }
+
+}
+
+

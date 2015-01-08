@@ -1,0 +1,52 @@
+// ==========================================================================
+//
+// Variables
+// 
+
+// ---------------------------------------------
+// Typography
+
+$base--font-size: 16px;
+
+$base--line-height: 26px;
+
+$font--base: 'BrandonText-Regular', "Helvetica", Arial, sans-serif;
+
+
+// ---------------------------------------------
+// Colour
+
+$color--background: #ffc7c0;
+$alt-background: #D0502D;
+
+$color--text: #FFFBE4;
+
+$dark-border: #3dbfb8;
+
+// ---------------------------------
+// Media queries breakpoints & mixin
+// 
+// Usage: 
+// 
+//  @include mq("small") {
+//    // small styles
+//  }
+// 
+
+$breakpoints: (
+  "extra-small" 500px,
+  "small" 600px,
+  "medium" 800px,
+  "large" 1000px,
+  "extra-large" 1200px
+);
+
+@mixin mq($size) { 
+  @each $breakpoint in $breakpoints {
+    @if ($size == nth($breakpoint, 1)) {
+      @media (min-width: nth($breakpoint, 2)) {
+        @content;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+-# --------------------------------
+-#
+-# Home device not supported 
+-#
+-# --------------------------------
+
+%div.videoHolder
+  %div.sorry-message.small-message
+    %p
+      Sorry, it looks like your browser is feeling weak too. Feed it with an upgrade, or try swapping to 
+      %a{:href => "https://www.google.com/chrome/browser/desktop/", target => "_blank"}
+        Google Chrome. 
+      Here is what you're missing!
+    %br
+  %div.videoWrapper
+    %iframe{ :src => "//player.vimeo.com/video/114666758?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff", :frameborder => "0", :webkitallowfullscreen => "", :mozallowfullscreen => "", :allowfullscreen => "",}
+  
