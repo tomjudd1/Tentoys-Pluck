@@ -45,8 +45,8 @@ if (Modernizr.canvas) {
 
 }
 
-var noHairs = rand(100,150);
-var padding = 0.1;
+var noHairs = 40;
+var padding = 0.3;
 var hairOffset = 0.25;
 
 
@@ -58,7 +58,7 @@ var hairCont;
 
 var scaler = 1;
 
-var hairLength = 25 * scaler;
+var hairLength = 30 * scaler;
 var hairWidth = 10 * scaler;
 var hairColor = "#766b6a";
 var skinColor = "#ffc7c0";
@@ -83,7 +83,7 @@ function init() {
   // intitiate the stage
   stage = new createjs.Stage("demoCanvas");
   stage.enableMouseOver();
-
+  createjs.Touch.enable(stage);
  
 
   hairCont = stage.addChild(new createjs.Container());
