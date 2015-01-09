@@ -1,0 +1,14 @@
+(function() {
+  if (window.JST == null) {
+    window.JST = {};
+  }
+
+  window.JST['backbone/templates/home/home_touch'] = function(context) {
+    return (function() {
+      var $o;
+      $o = [];
+      return $o.join("\n");
+    }).call(window.HAML.context(context));
+  };
+
+}).call(this);
