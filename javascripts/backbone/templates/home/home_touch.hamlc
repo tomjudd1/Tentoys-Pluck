@@ -1,0 +1,15 @@
+(function() {
+  if (window.JST == null) {
+    window.JST = {};
+  }
+
+  window.JST['backbone/templates/home/home_touch'] = function(context) {
+    return (function() {
+      var $o;
+      $o = [];
+      $o.push("<div class='videoHolder'>\n  <div class='overflow-helper' id='overflow-helper'>\n    <h2>\n      Merry Christmas \n      <br>\n      from Animade\n    </h2>\n    <div class='small-message sorry-message'>\n      <p>\n        We’ve made this toy to help bring Santa back to optimum tubbiness. It’s built for desktop browsers, so hold tight ’til you’re back at your big screen. It also works on the very latest mobiles and tablets, so if you’re a real fancy-pants then give it a whirl!\n      </p>\n      <br>\n    </div>\n    <a class='btn' href='mailto:test?Subject=Play%20Animade%27s%20Christmas%20game&Body=We%20heard%20that%20Santa%20was%20lacking%20in%20belly-fuel%20this%20year%2C%20so%20we%20have%20made%20this%20toy%20to%20help%20bring%20him%20back%20to%20optimum%20tubbiness.%20Visit%20http%3A//santa.animade.tv%20to%20feed%20Santa%20up.'>\n      Email this link to yourself \n    </a>\n    <a class='btn js-close-mob-promt' href='/'>\n      Give it a whirl\n    </a>\n  </div>\n</div>");
+      return $o.join("\n").replace(/\s(?:id|class)=(['"])(\1)/mg, "");
+    }).call(window.HAML.context(context));
+  };
+
+}).call(this);
