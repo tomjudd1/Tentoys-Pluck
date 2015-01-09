@@ -5,12 +5,9 @@
 
   window.JST['backbone/templates/home/home_touch_full'] = function(context) {
     return (function() {
-      var $c, $e, $o;
-      $e = window.HAML.escape;
-      $c = window.HAML.cleanValue;
+      var $o;
       $o = [];
-      $o.push("<div class='videoHolder'>\n  <div class='overflow-helper' id='overflow-helper'>\n    <svg class='logo-svg' id='Layer_1' enable-background='new 0 0 536 256.5' version='1.1' viewBox='0 0 550 256.5' x='0px' xml:space='preserve' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' y='0px'>\n      <path d='M194.9,203.4L343.3,54.5\n\tc19.1-19.1,45.4-30.8,74.4-30.8C475.9,23.7,523,70.8,523,129c0,58.1-47.1,105.3-105.3,105.3c-28.9,0-55-11.6-74.1-30.4L193.4,53.1\n\tc-18.9-18.2-44.6-29.4-73-29.4C62.3,23.7,15.1,70.8,15.1,129c0,58.1,47.1,105.3,105.3,105.3C149.5,234.2,175.8,222.5,194.9,203.4z' fill='none' stroke='#fffbe4' stroke-miterlimit='10' stroke-width='30'></path>\n    </svg>\n    <h2>\n      Merry Christmas \n      <br>\n      from Animade\n    </h2>\n    <div class='small-message sorry-message'>\n      <p>\n        Here's a Christmas toy for you to play with. It was built for desktop browsers so have a play when you are back at your desk. It also works on the very latest mobiles and tablets. So if you're a fancy pants then give it a whirl. It might just work!\n      </p>\n      <br>\n    </div>\n    <a class='btn' href='mailto:?Subject=SANTA%20IS%20WEAK%21&Body=http%3A//santa.animade.tv/'>\n      Email this link To yourself \n    </a>\n    <a class='btn js-close-mob-promt' href='/'>\n      Give it a whirl\n    </a>\n    <div class='videoWrapper'>\n      <iframe src='//player.vimeo.com/video/114666758?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff' frameborder='0' webkitallowfullscreen='' mozallowfullscreen='' allowfullscreen='" + ($e($c(""))) + "'></iframe>\n    </div>\n  </div>\n</div>");
-      return $o.join("\n").replace(/\s([\w-]+)='true'/mg, ' $1').replace(/\s([\w-]+)='false'/mg, '').replace(/\s(?:id|class)=(['"])(\1)/mg, "");
+      return $o.join("\n");
     }).call(window.HAML.context(context));
   };
 
