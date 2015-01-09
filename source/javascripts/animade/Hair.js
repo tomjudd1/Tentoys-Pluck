@@ -61,13 +61,14 @@ p.velocityY = 0;
 
 
 // growing
-p.growDelay = 50;
+p.growDelay = 5000;
 
 p.dragged = false;
 p.twanged = false;
 p.plucked = false;
 p.dropped = false;
 p.destroyed = false;
+p.growing = false;
 
 p.count = 0;
 
@@ -119,10 +120,11 @@ p.initialize = function(start, length, lineColor, strokeWidth, skinColor, streng
 
 	this.drawLine();
 
-	// var marker = new  createjs.Graphics();
-	// marker.f("#ccc").dc(0, 0, 30);
-	// var markerShape = new createjs.Shape(marker);
-	// this.addChild(markerShape);
+	var marker = new  createjs.Graphics();
+	marker.f("#fff").dc(0, -this.hairLength, this.hairLength*1);
+	var markerShape = new createjs.Shape(marker);
+	this.addChild(markerShape);
+	markerShape.alpha = 0.01;
 
 	this.on("mousedown", this.clicked);
 	this.on("pressmove", this.drag);
@@ -243,7 +245,6 @@ p.drag = function (event) {
 p.drop = function (event) {    
 	var target = event.target;
 	var point = this.globalToLocal(event.stageX, event.stageY);
-	
 
 
 	// drop the hair if it has been plucked
@@ -284,12 +285,45 @@ p.hairPlucked = function(){
 
 }
 
+p.hairGrow = function(){
+
+
+	this.plucked = false;
+
+	playSFX("grow"+rand(1,3));
+
+	// set the end of the line to the start of the line
+	this.startX = this.originalStartX;
+	this.startY = this.originalStartY;
+	this.currentStartX = this.originalStartX;
+	this.currentStartY = this.originalStartY;
+	this.endX = this.originalEndX;
+	this.endY = this.originalEndY;
+	this.currentEndX = this.originalStartX;
+	this.currentEndY = this.originalStartY;
+
+	this.destroyed = false;
+	this.growing = true;
+
+}
+
 p.springLine = function(tX, tY, cX, cY){
 
     this.velocityX += (tX - cX) * (this.spring - 0.07);
   	cX += (this.velocityX *= this.friction);
   
 	this.velocityY += (tY - cY) * (this.spring - 0.1);
+	cY += (this.velocityY *= this.friction);
+
+	return new createjs.Point(cX, cY);
+}
+
+p.growLine = function(tX, tY, cX, cY){
+
+    this.velocityX += (tX - cX) * 0.08;
+  	cX += (this.velocityX *= this.friction);
+  
+	this.velocityY += (tY - cY) * 0.08;
 	cY += (this.velocityY *= this.friction);
 
 	return new createjs.Point(cX, cY);
@@ -338,6 +372,12 @@ p.handleTick = function(event) {
     		this.removeChild(this.lineShape);
     		console.log("destroyed");
 
+    		// set timer for grow
+		 	var _this = this;
+		 	setTimeout(function() {
+          		_this.hairGrow();
+        	}, this.growDelay);
+
     	}
 
     	// work out acceleration and drop amount
@@ -361,6 +401,24 @@ p.handleTick = function(event) {
 
     }
 
+    // if dropped then fall
+    if(this.growing){
+
+    	console.log("growing");
+
+    	var c = this.growLine(this.endX, this.endY, this.currentEndX, this.currentEndY);
+    	this.currentEndX = c.x;
+    	this.currentEndY = c.y;
+
+		// if the current end point has reached the target end point then un toggle HIT
+		var current = new createjs.Point(this.currentEndX, this.currentEndY);
+		var target = new createjs.Point(this.endX, this.endY);
+
+		if( getDistance(current, target) < 0.2) {
+		 	this.growing = false;
+		}
+
+    }
 
 	this.drawLine();
 

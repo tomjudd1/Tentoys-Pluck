@@ -58,11 +58,11 @@ var hairCont;
 
 var scaler = 1;
 
-var hairLength = 30 * scaler;
+var hairLength = 45 * scaler;
 var hairWidth = 10 * scaler;
 var hairColor = "#766b6a";
 var skinColor = "#ffc7c0";
-var hairStrength = [100,200];
+var hairStrength = [150,200];
 var hairPosRandom = 5;
 var hairRotRandom = 5;
 
