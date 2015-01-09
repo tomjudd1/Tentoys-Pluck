@@ -4,19 +4,3 @@
 -#
 -# --------------------------------
 
-%div.videoHolder
-  %div#overflow-helper.overflow-helper
-    
-    %h2 
-      Merry Christmas 
-      %br
-      from Animade
-    %div.sorry-message.small-message
-      %p
-        We’ve made this toy to help bring Santa back to optimum tubbiness. It’s built for desktop browsers, so hold tight ’til you’re back at your big screen. It also works on the very latest mobiles and tablets, so if you’re a real fancy-pants then give it a whirl!
-      %br
-    %a{:href => "mailto:test?Subject=Play%20Animade%27s%20Christmas%20game&Body=We%20heard%20that%20Santa%20was%20lacking%20in%20belly-fuel%20this%20year%2C%20so%20we%20have%20made%20this%20toy%20to%20help%20bring%20him%20back%20to%20optimum%20tubbiness.%20Visit%20http%3A//santa.animade.tv%20to%20feed%20Santa%20up.", :class => "btn"}
-      Email this link to yourself 
-    %a{:href => "/", :class => "btn js-close-mob-promt"}
-      Give it a whirl
-   
