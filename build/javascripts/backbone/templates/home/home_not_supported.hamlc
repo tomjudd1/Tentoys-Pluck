@@ -5,12 +5,9 @@
 
   window.JST['backbone/templates/home/home_not_supported'] = function(context) {
     return (function() {
-      var $c, $e, $o;
-      $e = window.HAML.escape;
-      $c = window.HAML.cleanValue;
+      var $o;
       $o = [];
-      $o.push("<div class='videoHolder'>\n  <div class='small-message sorry-message'>\n    <p>\n      Sorry, it looks like your browser is feeling weak too. Feed it with an upgrade, or try swapping to \n      <a href='https://www.google.com/chrome/browser/desktop/\", target =>\"_blank'>\n        Google Chrome. \n      </a>\n      Here is what you're missing!\n    </p>\n    <br>\n  </div>\n  <div class='videoWrapper'>\n    <iframe src='//player.vimeo.com/video/114666758?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff' frameborder='0' webkitallowfullscreen='' mozallowfullscreen='' allowfullscreen='" + ($e($c(""))) + "'></iframe>\n  </div>\n</div>");
-      return $o.join("\n").replace(/\s([\w-]+)='true'/mg, ' $1').replace(/\s([\w-]+)='false'/mg, '').replace(/\s(?:id|class)=(['"])(\1)/mg, "");
+      return $o.join("\n");
     }).call(window.HAML.context(context));
   };
 
