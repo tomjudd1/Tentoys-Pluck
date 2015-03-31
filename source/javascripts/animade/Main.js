@@ -89,7 +89,10 @@ function init() {
   hairCont.width = window.innerWidth*(1-padding);
   hairCont.height = window.innerHeight*(1-padding);
 
-  resize();
+  hairCont.x = window.innerWidth*0.5 - hairCont.width*0.5;
+  hairCont.y = window.innerHeight*0.5 - hairCont.height*0.5;
+  stage.canvas.width = window.innerWidth;
+  stage.canvas.height = window.innerHeight; 
 
   var sqrt = Math.round(Math.sqrt(noHairs));
   var xSpace = (hairCont.width) / sqrt;
@@ -150,8 +153,12 @@ function tick() {
 
 
 function resize() { 
+  console.log('resize');
   hairCont.x = window.innerWidth*0.5 - hairCont.width*0.5;
   hairCont.y = window.innerHeight*0.5 - hairCont.height*0.5;
   stage.canvas.width = window.innerWidth;
-  stage.canvas.height = window.innerHeight;     
+  stage.canvas.height = window.innerHeight; 
+  hairs = [];
+  stage.clear();
+  init();
 }
