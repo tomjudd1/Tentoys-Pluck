@@ -6,7 +6,6 @@
 //
 //  
 //
-//= require "modernizr/modernizr"
 //= require "howler"
 
 //= require "animade/Hair"

@@ -10,10 +10,10 @@
     %meta{ :property => "og:description", :content => ""} 
 
     %link{ :href => "data/images/favicon.ico", :rel => "shortcut icon"}
-    %script{:src => "http://code.createjs.com/easeljs-0.8.0.min.js", :type => "text/javascript"}
-    %script{:src => "http://code.createjs.com/tweenjs-0.6.0.min.js", :type => "text/javascript"}
     %script{:src => "javascripts/plugins/minified/easing/EasePack.min.js", :type => "text/javascript"}
     %script{:src => "javascripts/plugins/minified/plugins/EaselPlugin.min.js", :type => "text/javascript"}
+      
+    = javascript_include_tag  "application"
 
     %script{:src => "javascripts/animade/Main.js", :type => "text/javascript"}
     
@@ -30,9 +30,6 @@
     / %div.info-button
     
     %canvas#demoCanvas{}
-
-      
-  = javascript_include_tag  "application"
 
 
   - if build?

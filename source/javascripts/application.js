@@ -1,3 +1,5 @@
+//= require "EaselJS"
+//= require "createjs-tweenjs"
 //= require "modernizr/modernizr"
 //= require "jquery"
 //= require "jquery.transit"

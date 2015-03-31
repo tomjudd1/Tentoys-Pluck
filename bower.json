@@ -5,7 +5,9 @@
     "jquery.transit": "",
     "modernizr": "",
     "normalize-css": "",
-    "backbone": ""
+    "backbone": "",
+    "EaselJS": "0.8.0",
+    "createjs-tweenjs": "0.6.0"
   },
   "authors": [
     "James Chambers <james@animade.tv>"
