@@ -10,6 +10,7 @@
     %meta{ :property => "og:description", :content => ""} 
 
     %link{ :href => "data/images/favicon.ico", :rel => "shortcut icon"}
+    = stylesheet_link_tag  "home"
     %script{:src => "javascripts/plugins/minified/easing/EasePack.min.js", :type => "text/javascript"}
     %script{:src => "javascripts/plugins/minified/plugins/EaselPlugin.min.js", :type => "text/javascript"}
       
@@ -19,8 +20,6 @@
     
     %title
       Pluck
-
-    = stylesheet_link_tag  "home"
 
   %body{class: page_classes, :onload => "init();"}
 
