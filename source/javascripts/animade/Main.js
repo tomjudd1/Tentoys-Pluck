@@ -153,10 +153,8 @@ function createHairs() {
     // get angle
     var source = new createjs.Point(hairCont.width*0.5, hairCont.height*1.5) ;
     var target = new createjs.Point(h.x, h.y) ;
-    //var a = getAngle(source, target);
-    var a = 0;
 
-    h.rotation = a + rand(-hairRotRandom,hairRotRandom);
+    h.rotation = rand(-hairRotRandom,hairRotRandom);
     h.setGravity(h.rotation);
 
     h.on("mousedown", hairClicked);
