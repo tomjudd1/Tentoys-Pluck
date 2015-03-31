@@ -45,6 +45,7 @@ if (Modernizr.canvas) {
 }
 
 var noHairs = 40;
+var sqrt = Math.round(Math.sqrt(noHairs));
 var padding = 0.3;
 var hairOffset = 0.25;
 
@@ -57,6 +58,8 @@ var hairCont;
 
 var scaler = 1;
 
+var currentlyResizing = false;
+
 var hairLength = 45 * scaler;
 var hairWidth = 10 * scaler;
 var hairColor = "#766b6a";
@@ -67,10 +70,11 @@ var hairRotRandom = 5;
 
 var hairs = [];
 
-
 window.addEventListener('resize', resize, false);
 
-
+//
+// Functions
+//
 
 function init() {
 
@@ -83,22 +87,47 @@ function init() {
   stage = new createjs.Stage("demoCanvas");
   stage.enableMouseOver();
   createjs.Touch.enable(stage);
- 
 
-  hairCont = stage.addChild(new createjs.Container());
-  hairCont.width = window.innerWidth*(1-padding);
-  hairCont.height = window.innerHeight*(1-padding);
+  makeCanvasFullsize();
+  createHairContainer();
+  createHairs();
 
-  hairCont.x = window.innerWidth*0.5 - hairCont.width*0.5;
-  hairCont.y = window.innerHeight*0.5 - hairCont.height*0.5;
-  stage.canvas.width = window.innerWidth;
-  stage.canvas.height = window.innerHeight; 
+  stage.update();
 
-  var sqrt = Math.round(Math.sqrt(noHairs));
+  // On Frame
+  createjs.Ticker.addEventListener("tick", tick);
+
+}
+
+function hairClicked(event){
+  console.log(hairCont.children.length);
+  hairCont.setChildIndex(event.target, hairCont.children.length-1);
+}
+  
+
+function tick() {
+  stage.update();
+} 
+
+
+function resize() { 
+  if (!currentlyResizing) {
+    currentlyResizing = true;
+
+    makeCanvasFullsize();
+    hairs = [];
+    stage.removeAllChildren();
+    createHairContainer();
+    createHairs();
+    stage.update();
+
+    currentlyResizing = false;
+  }
+}
+
+function createHairs() {
   var xSpace = (hairCont.width) / sqrt;
   var ySpace = (hairCont.height) / sqrt;
-
-  console.log("SQRT = " + sqrt);
 
   for (var i = 0; i < noHairs; i++) {
       
@@ -132,33 +161,21 @@ function init() {
 
     h.on("mousedown", hairClicked);
 
-  };
-
-  stage.update();
-
-  // On Frame
-  createjs.Ticker.addEventListener("tick", tick);
-
+  }
 }
 
-function hairClicked(event){
-  console.log(hairCont.children.length);
-  hairCont.setChildIndex(event.target, hairCont.children.length-1);
-}
-  
+function createHairContainer() {
+  hairCont = stage.addChild(new createjs.Container());
+  hairCont.width = window.innerWidth*(1-padding);
+  hairCont.height = window.innerHeight*(1-padding);
 
-function tick() {
-  stage.update();
-} 
-
-
-function resize() { 
-  console.log('resize');
   hairCont.x = window.innerWidth*0.5 - hairCont.width*0.5;
   hairCont.y = window.innerHeight*0.5 - hairCont.height*0.5;
-  stage.canvas.width = window.innerWidth;
-  stage.canvas.height = window.innerHeight; 
-  hairs = [];
-  stage.clear();
-  init();
+}
+
+function makeCanvasFullsize() {
+  if (stage !== undefined) {
+    stage.canvas.width = window.innerWidth;
+    stage.canvas.height = window.innerHeight;
+  }
 }
